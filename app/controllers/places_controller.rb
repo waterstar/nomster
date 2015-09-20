@@ -1,6 +1,7 @@
 class PlacesController < ApplicationController
 	def index
 		@places = Place.all
+		@places_per_page = @places.page(params[:page]).per(5)
 	end
 
 	def new
