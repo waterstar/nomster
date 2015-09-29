@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class PlacesControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  test "show an entry" do
+  	place = FactoryGirl.create(:place)
+  	get :show, :id => place.id
+  	assert_response :success
+  end
 end
