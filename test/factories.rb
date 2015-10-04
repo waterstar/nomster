@@ -1,4 +1,7 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :comment do
+    
+  end
+
   factory :place do
   	name "supersushi"
 	description "best sushi in town!!!!"
