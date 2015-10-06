@@ -40,15 +40,32 @@
   <% end %>
   </div>
 
+<div class="clear"></div>
+<br />
+<br />
+
+  <h1 class="col-xs-12 pull-left">Photos</h1>
   <div class="clear"></div>
+  <br />
+  <br />
+  <% @place.photos.each do |photo| %>
+  <div class="col-xs-12 col-sm-6">
+  <%= image_tag photo.picture, :class => 'img-responsive' %>
+  <br />
+  <h4 class="text-left">[ <%= photo.caption %> ]</h4>
+  </div>
+  <% end %>
+  
+<div class="clear"></div>
 <br />
 <br />
-<div class="col-xs-12">
-  <h1 class="pull-left">Comments</h1>
-  <button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal">
-    Add a comment
-  </button>
-</div>
+
+  <div class="col-xs-12">
+    <h1 class="pull-left">Comments</h1>
+    <button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal">
+      Add a comment
+    </button>
+  </div>
 
   <div class="clear"></div>
 
@@ -102,12 +119,6 @@
 <!-- end of modal -->
   <br />
   <br />
-
-    <% @place.photos.each do |photo| %>
-    <%#= photo.picture.store_dir %>
-    <%= image_tag photo.picture %>
-    <%= photo.caption %>
-    <% end %>
 
   <% if @place.comments.any? %>
   <% @place.comments.each do |comment| %>
