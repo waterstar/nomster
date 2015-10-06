@@ -1,4 +1,7 @@
-FactoryGirl.define do  factory :comment do
+FactoryGirl.define do  factory :photo do
+    
+  end
+  factory :comment do
     
   end
 

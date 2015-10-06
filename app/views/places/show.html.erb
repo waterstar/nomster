@@ -29,6 +29,9 @@
   <% end %>
 
   <div class="pull-right">
+  <button class="btn btn-primary" data-toggle="modal" data-target="#myModal_1">
+    Add Photos
+  </button>
   <% if current_user && current_user == @place.user %>
   <%= link_to 'Edit', edit_place_path(@place), :class => 'btn btn-primary' %>
   <%= link_to 'Destroy', place_path(@place), 
@@ -42,13 +45,13 @@
 <br />
 <div class="col-xs-12">
   <h1 class="pull-left">Comments</h1>
-  <!-- Button trigger modal -->
-  <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#myModal">
+  <button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal">
     Add a comment
   </button>
 </div>
 
   <div class="clear"></div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -59,7 +62,7 @@
         <h4 class="modal-title" id="myModalLabel">Add a comment</h4>
       </div>
       <%= simple_form_for @comment, :url => place_comments_path(@place) do |f| %>
-      
+
       <div class="modal-body">
 
       <%= f.input :message %>
@@ -74,8 +77,38 @@
   </div>
 </div>
 
+<div class="modal fade" id="myModal_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add a Photo</h4>
+      </div>
+      <%= simple_form_for @photo, :url => place_photos_path(@place) do |f| %>
+
+      <div class="modal-body">
+
+      <%= f.file_field :picture %>
+      <%= f.input :caption %>
+
+      </div>
+      <div class="modal-footer">
+      <%= f.submit "Upload", :class => 'btn btn-primary' %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of modal -->
   <br />
   <br />
+
+    <% @place.photos.each do |photo| %>
+    <%#= photo.picture.store_dir %>
+    <%= image_tag photo.picture %>
+    <%= photo.caption %>
+    <% end %>
+
   <% if @place.comments.any? %>
   <% @place.comments.each do |comment| %>
     <div class="col-xs-12 col-sm-6">
