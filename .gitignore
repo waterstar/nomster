@@ -21,6 +21,7 @@ ctags.rb
 ctags
 tags
 tags.local
+.gemtags
 
 # Ignore application configuration
 /config/application.yml

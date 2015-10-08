@@ -52,6 +52,14 @@ gem 'carrierwave'
 
 gem "fog", "~> 1.3.1"
 
+gem "awesome_print", require:"ap"
+
+gem "what_methods"
+
+group :development do
+  gem 'meta_request'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
