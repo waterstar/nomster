@@ -22,6 +22,7 @@ ctags
 tags
 tags.local
 .gemtags
+.DS_Store
 
 # Ignore application configuration
 /config/application.yml
