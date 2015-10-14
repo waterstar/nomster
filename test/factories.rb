@@ -1,6 +1,17 @@
-FactoryGirl.define do  factory :photo do
+FactoryGirl.define do  
+
+  factory :user do
+  	sequence :email do |n|
+  		"myemail#{n}@gmail.com"
+  	end
+  	password "12345678"
+  	password_confirmation "12345678"
+  end
+
+  factory :photo do
     
   end
+
   factory :comment do
     
   end
